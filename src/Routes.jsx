@@ -1,15 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+import App from 'web/components/App';
+import Home from 'web/components/Home';
 
 const About = () => (
   <div>
-    <h2>About</h2>
+    about
   </div>
 );
 
@@ -21,19 +18,11 @@ const Topic = ({ match }) => ( // eslint-disable-line
 
 const BasicExample = () => (
   <Router>
-    <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics/123">Topic 123</Link></li>
-      </ul>
-
-      <hr />
-
+    <App>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/topics/:topicId" component={Topic} />
-    </div>
+    </App>
   </Router>
 );
 

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: [
-    './src/client/index.jsx',
+    './src/web/client/index.jsx',
   ],
   devtool: 'source-map',
   output: {
@@ -10,6 +10,10 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
+    modules: [
+      'src',
+      'node_modules',
+    ],
     extensions: ['.js', '.jsx'],
   },
   module: {
@@ -22,7 +26,24 @@ module.exports = {
       {
         test: /\.scss$/,
         include: __dirname,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              localIdentName: '[hash:base64]-[name]-[local]',
+              modules: true,
+            },
+          },
+          /* {
+            loader: 'postcss-loader',
+          },*/
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
     ],
   },
