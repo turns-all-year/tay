@@ -1,0 +1,44 @@
+@import "~web/client/scss/mixins";
+
+.main {
+  @include main;
+  padding: #{$largeGutter}px 0 0;
+
+  @include media($laptopWidth, 0) {
+    display: flex;
+  }
+}
+
+%column {
+  @include whiteBox;
+  min-height: 300px;
+  margin: #{$largeGutter}px;
+
+  @include media($laptopWidth, 0) {
+    width: 50%;
+  }
+}
+
+.left {
+  @extend %column;
+
+  @include media($laptopWidth, 0) {
+    margin: 0 #{$largeGutter / 2}px 0 #{$largeGutter}px;
+  }
+
+  @include media($maxWidth, 0) {
+    margin: 0 #{$largeGutter / 2}px 0 0;
+  }
+}
+
+.right {
+  @extend %column;
+
+  @include media($laptopWidth, 0) {
+    margin: 0 #{$largeGutter}px 0 #{$largeGutter / 2}px;
+  }
+
+  @include media($maxWidth, 0) {
+    margin: 0 0 0 #{$largeGutter / 2}px;
+  }
+}

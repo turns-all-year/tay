@@ -1,6 +1,29 @@
 @import "./variables";
 
 @mixin main {
-  max-width: 1200px;
+  max-width: $maxWidth;
   margin: 0 auto;
+}
+
+@mixin media($min, $max) {
+  @if $max == 0 {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $min == 0 {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+@mixin whiteBox {
+  border: 1px solid $lightGrey;
+  border-radius: 5px;
+  background: $white;
+  padding: 15px;
 }

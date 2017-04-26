@@ -3,6 +3,7 @@
 .wrapper {
   width: 100%;
   background: linear-gradient(to right, $white, $white 40%, $black 50%);
+  border-bottom: 1px solid $lightGrey;
 }
 
 .container {
@@ -21,6 +22,7 @@
   color: $white;
   flex-grow: 1;
   display: flex;
+  position: relative;
 }
 
 .title {
@@ -30,14 +32,37 @@
 }
 
 .nav {
+  opacity: 0;
   list-style: none;
+  position: absolute;
+  top: 70px;
+  right: 0;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-grow: 1;
+  flex-direction: column;
+  background: $black;
+  margin: 0;
+  padding: 0;
+
+  .showMenu & {
+    opacity: 1;
+  }
+
+  @include media($tabletWidth, 0) {
+    opacity: 1;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
 
   li {
-    margin: 0 20px;
+    margin: 15px 25px;
+
+    @include media($tabletWidth, 0) {
+      margin: 0 20px;
+    }
   }
 
   a {
@@ -49,5 +74,17 @@
     &:hover {
       color: $dimGrey;
     }
+  }
+}
+
+.hamburger {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 40px;
+  cursor: pointer;
+
+  @include media($tabletWidth, 0) {
+    opacity: 0;
   }
 }
