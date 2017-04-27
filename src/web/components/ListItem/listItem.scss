@@ -1,0 +1,5 @@
+@import "~web/client/scss/mixins";
+
+.date {
+  @include postDate;
+}

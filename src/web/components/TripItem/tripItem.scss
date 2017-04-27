@@ -1,0 +1,25 @@
+@import "~web/client/scss/mixins";
+
+.main {
+  display: flex;
+}
+
+.image {
+  @include aspectRatio(1, 1);
+  width: 50%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  margin: 0 15px 0 0;
+
+  @include media($phabletWidth, 0) {
+    width: 30%;
+  }
+
+  @include media($laptopWidth, 0) {
+    width: 50%;
+  }
+}
+
+.date {
+  @include postDate;
+}

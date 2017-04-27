@@ -4,7 +4,7 @@
 # PrivateNamingConvention
 
 files:
-  include: 'src/**/*.s+(a|c)ss'
+  include: 'src/**/*.sass'
 options:
     # TODO : these options can be used to define default functionality,
     # - but this isn't quite desireable, as they should only be included in the ci script

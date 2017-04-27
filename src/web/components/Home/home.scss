@@ -9,6 +9,10 @@
   }
 }
 
+.columnHeading {
+  margin: 0 0 -10px;
+}
+
 %column {
   @include whiteBox;
   min-height: 300px;
@@ -19,7 +23,7 @@
   }
 }
 
-.left {
+.trips {
   @extend %column;
 
   @include media($laptopWidth, 0) {
@@ -31,7 +35,11 @@
   }
 }
 
-.right {
+.tripItem {
+  margin: 0 0 15px;
+}
+
+.tracks {
   @extend %column;
 
   @include media($laptopWidth, 0) {
@@ -41,4 +49,8 @@
   @include media($maxWidth, 0) {
     margin: 0 0 0 #{$largeGutter / 2}px;
   }
+}
+
+.listItem {
+  margin: 0 0 20px;
 }

@@ -27,3 +27,16 @@
   background: $white;
   padding: 15px;
 }
+
+@mixin aspectRatio($width, $height) {
+  &::before {
+    display: block;
+    content: "";
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
+@mixin postDate {
+  color: $darkGrey;
+  font-size: 1.2rem;
+}
