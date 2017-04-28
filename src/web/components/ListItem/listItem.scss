@@ -3,3 +3,8 @@
 .date {
   @include postDate;
 }
+
+.author {
+  display: block;
+  margin: 10px 0;
+}

@@ -9,6 +9,7 @@
 .container {
   @include main;
   display: flex;
+  height: 70px;
 }
 
 .logo {

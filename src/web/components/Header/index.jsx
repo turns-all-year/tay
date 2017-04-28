@@ -23,15 +23,16 @@ class Header extends React.Component {
     return (
       <header className={styles.wrapper}>
         <div className={styles.container}>
-          <img alt="Turns All Year" className={styles.logo} src="images/tay-logo-sized.gif" />
+          <Link to="/" title="home">
+            <img alt="Turns All Year" className={styles.logo} src="images/tay-logo-sized.png" />
+          </Link>
 
           <nav className={`${styles.main} ${navStateClass}`}>
-            <div className={styles.title}>urns all year</div>
-
             <ul className={styles.nav}>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/topics/123">Topic 123</Link></li>
+              <li><Link to="/groups">Groups</Link></li>
+              <li><Link to="/users">Skiers</Link></li>
+              <li><Link to="/trip-reports">Trip Reports</Link></li>
+              <li><Link to="/random-tracks">Random Tracks</Link></li>
             </ul>
 
             <switch className={styles.hamburger} onClick={this.toggleMenu}>

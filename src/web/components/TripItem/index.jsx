@@ -6,28 +6,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Shiitake from 'shiitake';
+import { Link } from 'react-router-dom';
 
 import styles from './tripItem.scss';
 
 const propTypes = {
-  img: PropTypes.string.isRequired,
+  img: PropTypes.array.isRequired,
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   className: PropTypes.string,
+  author: PropTypes.object.isRequired,
 };
 
 const defaultProps = {
   className: '',
 };
 
-export const TripItem = ({ img, date, title, body, className }) => (
+export const TripItem = ({ img, date, title, body, className, author }) => (
   <div className={`${styles.main} ${className}`}>
-    <div className={styles.image} style={{ background: `url(images/${img}) no-repeat center` }} />
+    <div className={styles.image} style={{ background: `url(images/${img[0]}) no-repeat center` }} />
 
     <div className={styles.data}>
       <h4>{title}</h4>
       <span className={styles.date}>{date}</span>
+      <Link to={`users/${author.id}`} className={styles.author}>{author.name}</Link>
       <Shiitake className={styles.body} lines={8}>{body}</Shiitake>
     </div>
   </div>

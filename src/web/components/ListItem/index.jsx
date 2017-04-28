@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Shiitake from 'shiitake';
+import { Link } from 'react-router-dom';
 
 import styles from './listItem.scss';
 
@@ -14,16 +15,18 @@ const propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   className: PropTypes.string,
+  author: PropTypes.object.isRequired,
 };
 
 const defaultProps = {
   className: '',
 };
 
-export const ListItem = ({ date, title, body, className }) => (
+export const ListItem = ({ date, title, body, className, author }) => (
   <div className={`${styles.main} ${className}`}>
     <h4>{title}</h4>
     <span className={styles.date}>{date}</span>
+    <Link to={`users/${author.id}`} className={styles.author}>{author.name}</Link>
     <Shiitake className={styles.body} lines={8}>{body}</Shiitake>
   </div>
 );
