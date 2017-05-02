@@ -12,8 +12,20 @@ const store = createStore(
   combineReducers(reducers),
 );
 
-ReactDOM.render(
-  <Provider store={store} key="provider">
-    <Routes />
-  </Provider>,
-  document.getElementById('react-root'));
+const render = (Component) => {
+  ReactDOM.render(
+    <Provider store={store} key="provider">
+      <Component />
+    </Provider>,
+    document.getElementById('react-root'),
+  );
+};
+
+render(Routes);
+
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('Routes', () => {
+    render(Routes);
+  });
+}

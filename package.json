@@ -4,7 +4,7 @@
   "description": "New turns all year site",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.js --hot --inline --content-base dist",
+    "dev": "webpack-dev-server --config webpack.config.js",
     "build": "webpack --config webpack.config.js -p",
     "start": "node src/web/server/index.js"
   },
@@ -37,6 +37,7 @@
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-react": "^6.10.3",
     "node-sass": "^4.5.2",
+    "react-hot-loader": "next",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1",

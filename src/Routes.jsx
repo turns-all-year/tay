@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import App from 'web/components/App';
-import Home from 'web/components/Home';
+import App from 'web/App';
+import Home from 'web/pages/Home';
+import User from 'web/pages/User';
 
 const About = () => (
   <div>
@@ -20,6 +21,7 @@ const BasicExample = () => (
   <Router>
     <App>
       <Route exact path="/" component={Home} />
+      <Route path="/users/:userId" component={User} />
       <Route path="/about" component={About} />
       <Route path="/topics/:topicId" component={Topic} />
     </App>

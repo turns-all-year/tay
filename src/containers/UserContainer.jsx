@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 // Adding the contianer logic here
-function mapStateToProps({ home }) {
-  return { ...home };
+function mapStateToProps({ user }) {
+  return { ...user };
 }
 
 function mapDispatchToProps() {

@@ -1,0 +1,45 @@
+@import "~web/client/scss/mixins";
+
+.wrapper {
+  @include main;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.name {
+  margin: 10px 0;
+}
+
+.stats {
+  list-style: none;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+
+  li {
+    margin: 0 20px;
+    font-size: 1.6rem;
+    color: $dimGrey;
+  }
+}
+
+.main {
+  display: flex;
+}
+
+.sideBar {
+  @include whiteBox;
+  width: 30%;
+  margin-right: #{$largeGutter}px;
+}
+
+.posts {
+  @include whiteBox;
+  width: 70%;
+}
