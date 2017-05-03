@@ -28,7 +28,7 @@ export const User = ({ name, totalPosts, consecutiveMonths, createdDate, posts, 
     <div className={styles.topBar}>
       <h2 className={styles.name}>{name}</h2>
       <ul className={styles.stats}>
-        <li>{totalPosts} postes</li>
+        <li>{totalPosts} posts</li>
         <li>member since {createdDate}</li>
         <li>{consecutiveMonths} consecutive months</li>
       </ul>
