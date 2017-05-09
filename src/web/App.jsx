@@ -1,18 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
-import Header from './components/Header';
+import Home from 'web/pages/Home';
+import Header from 'web/components/Header';
+
+import User from 'web/pages/User';
+import Users from 'web/pages/Users';
+import Groups from 'web/pages/Groups';
+import Group from 'web/pages/Group';
+import Track from 'web/pages/Track';
+import Tracks from 'web/pages/Tracks';
+import Trip from 'web/pages/Trip';
+import Trips from 'web/pages/Trips';
+
 import styles from './app.scss';
 
-const propTypes = {
-  children: PropTypes.array.isRequired,
-};
+const propTypes = {};
 
-const App = ({ children }) => (
+const App = () => (
   <div className={styles.main}>
     <Header />
 
-    {children}
+    <Route exact path="/" component={Home} />
+    <Route exact path="/users" component={Users} />
+    <Route path="/users/:userId" component={User} />
+    <Route exact path="/groups" component={Groups} />
+    <Route path="/groups/:groupId" component={Group} />
+    <Route exact path="/trip-reports" component={Trips} />
+    <Route path="/trip-reports/:tripId" component={Trip} />
+    <Route exact path="/random-tracks" component={Tracks} />
+    <Route path="/random-tracks/:trackId" component={Track} />
   </div>
 );
 

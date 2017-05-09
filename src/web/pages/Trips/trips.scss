@@ -1,0 +1,14 @@
+@import "~web/client/scss/mixins";
+
+.wrapper {
+  @include main;
+}
+
+.pageHeading {
+  @include pageHeading;
+}
+
+.tripSection {
+  @include whiteBox;
+  margin: 20px 0;
+}

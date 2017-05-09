@@ -24,7 +24,7 @@ class Header extends React.Component {
       <header className={styles.wrapper}>
         <div className={styles.container}>
           <Link to="/" title="home">
-            <img alt="Turns All Year" className={styles.logo} src="images/tay-logo-sized.png" />
+            <img alt="Turns All Year" className={styles.logo} src="/images/tay-logo-sized.png" />
           </Link>
 
           <nav className={`${styles.main} ${navStateClass}`}>

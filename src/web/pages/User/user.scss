@@ -11,32 +11,47 @@
 }
 
 .name {
-  margin: 10px 0;
-}
-
-.stats {
-  list-style: none;
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 0;
-
-  li {
-    margin: 0 20px;
-    font-size: 1.6rem;
-    color: $dimGrey;
-  }
+  @include pageHeading;
 }
 
 .main {
   display: flex;
+  align-items: flex-start;
 }
 
 .sideBar {
   @include whiteBox;
   width: 30%;
   margin-right: #{$largeGutter}px;
+  color: $dimGrey;
+}
+
+.stats {
+  list-style: none;
+  margin: 20px 0;
+
+  li {
+    margin: 10px 0;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+
+    span {
+      line-height: 1em;
+    }
+  }
+
+  i {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.profilePic {
+  @include aspectRatio(1,1);
+  width: 100%;
+  border-radius: 50%;
+  margin: 20px 0 50px;
 }
 
 .posts {

@@ -4,28 +4,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import reducers from 'reducers';
-import Routes from 'Routes';
+import App from 'web/App.jsx';
 
 const store = createStore(
   combineReducers(reducers),
 );
 
-const render = (Component) => {
+const render = () => {
   ReactDOM.render(
     <Provider store={store} key="provider">
-      <Component />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>,
     document.getElementById('react-root'),
   );
 };
 
-render(Routes);
+render();
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('Routes', () => {
-    render(Routes);
+  module.hot.accept('App', () => {
+    render();
   });
 }

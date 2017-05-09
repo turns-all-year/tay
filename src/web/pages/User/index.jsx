@@ -27,21 +27,21 @@ export const User = ({ name, totalPosts, consecutiveMonths, createdDate, posts, 
   <div className={styles.wrapper}>
     <div className={styles.topBar}>
       <h2 className={styles.name}>{name}</h2>
-      <ul className={styles.stats}>
-        <li>{totalPosts} posts</li>
-        <li>member since {createdDate}</li>
-        <li>{consecutiveMonths} consecutive months</li>
-      </ul>
     </div>
-    <div className={styles.main}>
-      <div className={styles.sideBar}>
-        <div className={styles.profilePic} style={{ background: `url(${profilePic})` }} />
+    <main className={styles.main}>
+      <section className={styles.sideBar}>
+        <div className={styles.profilePic} style={{ background: `url(/images/${profilePic}) center` }} />
+        <ul className={styles.stats}>
+          <li><i className="icon-new-message" /> <span>{totalPosts} posts</span></li>
+          <li><i className="icon-user" /> <span>member since {createdDate}</span></li>
+          <li><i className="icon-calendar" /> <span>{consecutiveMonths} consecutive months</span></li>
+        </ul>
         <div className={styles.bio}>{bio}</div>
-      </div>
-      <div className={styles.posts}>
+      </section>
+      <section className={styles.posts}>
         { posts.map(post => (post.type === 'tr') ? <TripItem key={post.id} {...post} /> : <ListItem key={post.id} {...post} />) }
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
 );
 
