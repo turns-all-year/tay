@@ -30,8 +30,12 @@ export const TripItem = ({ img, date, title, body, className, author }) => (
 
     <div className={styles.data}>
       <h4>{title}</h4>
-      <span className={styles.date}>{date}</span>
-      { author ? <Link to={`users/${author.id}`} className={styles.author}>{author.name}</Link> : null }
+      <div className={styles.date}>{date}</div>
+
+      <Link to={`users/${author.id}`} className={styles.author}>{author.name}</Link>
+      &nbsp; @ &nbsp;
+      <Link to="/groups/123">Awesome Group</Link>
+
       <Shiitake className={styles.body} lines={8}>{body}</Shiitake>
     </div>
   </div>

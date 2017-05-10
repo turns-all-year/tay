@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 import container from 'containers/TripsContainer';
 import TripItem from 'web/components/TripItemLarge';
+import ListControls from 'web/components/ListControls';
 
 import styles from './trips.scss';
 
@@ -16,12 +17,15 @@ const propTypes = {
 };
 
 export const Trips = ({ trips }) => (
-  <div className={styles.wrapper}>
-    <h2 className={styles.pageHeading}>Trip Reports</h2>
-    <main className={styles.main}>
-      { trips.map(trip => <section key={trip.id} className={styles.tripSection}><TripItem {...trip} /></section>) }
-    </main>
-  </div>
+  <main className={styles.main}>
+    <div className={styles.top}>
+      <h2 className={styles.pageHeading}>Trip Reports</h2>
+
+      <ListControls />
+    </div>
+
+    { trips.map(trip => <section key={trip.id} className={styles.tripSection}><TripItem {...trip} /></section>) }
+  </main>
 );
 
 Trips.propTypes = propTypes;

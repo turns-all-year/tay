@@ -14,7 +14,7 @@ const propTypes = {
 
 export const Tracks = () => (
   <div className={styles.main}>
-    Random tracks page
+    All Random tracks page
   </div>
 );
 

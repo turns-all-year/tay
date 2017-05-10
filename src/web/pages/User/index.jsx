@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import container from 'containers/UserContainer';
 import TripItem from 'web/components/TripItem';
 import ListItem from 'web/components/ListItem';
+import ListControls from 'web/components/ListControls';
 
 import styles from './user.scss';
 
@@ -39,6 +40,13 @@ export const User = ({ name, totalPosts, consecutiveMonths, createdDate, posts, 
         <div className={styles.bio}>{bio}</div>
       </section>
       <section className={styles.posts}>
+        <div className={styles.postsTop}>
+          <h3>{name.split(' ')[0]}&#39;s Posts</h3>
+          <ListControls />
+        </div>
+
+        <hr />
+
         { posts.map(post => (post.type === 'tr') ? <TripItem key={post.id} {...post} /> : <ListItem key={post.id} {...post} />) }
       </section>
     </main>

@@ -4,12 +4,6 @@
   @include main;
 }
 
-.topBar {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
 .name {
   @include pageHeading;
 }
@@ -57,4 +51,9 @@
 .posts {
   @include whiteBox;
   width: 70%;
+}
+
+.postsTop {
+  display: flex;
+  align-items: center;
 }

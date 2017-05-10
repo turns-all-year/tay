@@ -14,7 +14,7 @@ const propTypes = {
 
 export const Group = () => (
   <div className={styles.main}>
-    Something
+    Group detail page
   </div>
 );
 

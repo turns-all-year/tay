@@ -1,0 +1,88 @@
+@import "~web/client/scss/mixins";
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.controlGroup {
+  position: relative;
+  margin: 0 10px;
+
+  label,
+  select,
+  input {
+    margin: 0;
+  }
+
+  label {
+    margin: 0 7px;
+  }
+}
+
+.groupLabel {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  z-index: 10;
+  position: relative;
+  border: 1px solid transparent;
+
+  &.active {
+    @include whiteBox;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom: none;
+    padding: 10px 15px;
+  }
+}
+
+%dropList {
+  @include whiteBox;
+  position: absolute;
+  top: 38px;
+  right: 0;
+  list-style: none;
+  z-index: 5;
+  border-top-right-radius: 0px;
+  min-width: 100%;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input {
+      margin-top: 2px;
+    }
+
+    a, label {
+      cursor: pointer;
+      font-size: 1.6rem;
+      color: $darkestGrey;
+      white-space: nowrap;
+      font-weight: 500;
+
+      &:hover {
+        color: $darkGrey;
+      }
+    }
+
+    span, label {
+      margin: 0 10px;
+    }
+  }
+}
+
+.filters {
+  @extend %dropList;
+}
+
+.sort {
+  @extend %dropList;
+}

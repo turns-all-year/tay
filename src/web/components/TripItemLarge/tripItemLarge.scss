@@ -25,9 +25,9 @@
 
 .date {
   @include postDate;
+  margin: 0 0 10px;
 }
 
-.author {
-  display: block;
-  margin: 10px 0;
+.body {
+  margin: 10px 0 0;
 }

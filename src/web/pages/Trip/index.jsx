@@ -14,7 +14,7 @@ const propTypes = {
 
 export const Trip = () => (
   <div className={styles.main}>
-    Trip report page
+    Trip report detail page
   </div>
 );
 
