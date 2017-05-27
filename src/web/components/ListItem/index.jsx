@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Shiitake from 'shiitake';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import styles from './listItem.scss';
 

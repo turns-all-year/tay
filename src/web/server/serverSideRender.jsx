@@ -1,41 +1,53 @@
+import 'isomorphic-fetch';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router';
-import { createStore, combineReducers } from 'redux';
+import { match, RouterContext } from 'react-router';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import thunk from 'redux-thunk';
 
 import reducers from 'reducers';
-import App from 'web/App';
+import routes from 'web/routes';
 import Html from './Html';
 
 export default function (req, res) {
-  const store = createStore(
-    combineReducers(reducers),
-  );
+  match({ routes, location: req.url }, (err, redirect, renderProps) => {
+    // TODO: handle errors, redirects, etc here
+    if (err) {
+      // there was an error somewhere during route matching
+      res.status(500).send(err.message);
+    } else if (redirect) {
+      // we haven't talked about `onEnter` hooks on routes, but before a
+      // route is entered, it can redirect. Here we handle on the server.
+      res.redirect(redirect.pathname + redirect.search);
+    } else if (renderProps) {
+      const store = createStore(
+        combineReducers(reducers),
+        compose(
+          applyMiddleware(thunk),
+        ),
+      );
 
-  const context = {};
-  let markup = '';
-  try {
-    markup = ReactDOMServer.renderToString(
-      <Provider store={store} key="provider">
-        <StaticRouter
-          location={req.url}
-          context={context}
-        >
-          <App />
-        </StaticRouter>
-      </Provider>);
-  } catch (err) {
-    return res.status(500).send(err.message);
-  }
+      loadOnServer({ ...renderProps, store }).then(() => {
+        let markup = '';
+        try {
+          markup = ReactDOMServer.renderToString(
+            <Provider store={store} key="provider">
+              <RouterContext {...renderProps} render={props => <ReduxAsyncConnect {...props} />} />
+            </Provider>);
+        } catch (error) {
+          return res.status(500).send(error.message);
+        }
 
-  if (context.url) {
-    // Somewhere a `<Redirect>` was rendered
-    return res.redirect(301, context.url);
-  }
+        const html = ReactDOMServer.renderToStaticMarkup(
+          <Html {...{ markup, currentState: store.getState() }} />);
 
-  const html = ReactDOMServer.renderToStaticMarkup(
-    <Html {...{ markup, currentState: store.getState() }} />);
-
-  return res.send(`<!DOCTYPE html>${html}`);
+        return res.send(`<!DOCTYPE html>${html}`);
+      });
+    } else {
+      // no errors, no redirect, we just didn't match anything
+      res.status(404).send('Not Found');
+    }
+  });
 }

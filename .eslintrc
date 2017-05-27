@@ -20,5 +20,10 @@
         1,
         150
       ]
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "mocha": true
     }
 }

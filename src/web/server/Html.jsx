@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 const Html = ({ markup, currentState }) => {
-  const scriptContents = `window.__reactTransmitPacket = ${JSON.stringify(currentState).replace(/<\//g, '<\\/')};`;
+  const scriptContents = `window.__data = ${JSON.stringify(currentState).replace(/<\//g, '<\\/')};`;
 
   return (
     <html lang="en-US">

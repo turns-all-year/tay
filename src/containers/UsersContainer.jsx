@@ -1,10 +1,10 @@
 import { asyncConnect } from 'redux-connect';
 
-import { getHomeData } from 'actions/homeActions';
+import { getUsersData } from 'actions/usersActions';
 
 // Adding the contianer logic here
-function mapStateToProps({ home }) {
-  return { ...home };
+function mapStateToProps({ users }) {
+  return { ...users };
 }
 
 function mapDispatchToProps() {
@@ -13,6 +13,6 @@ function mapDispatchToProps() {
 
 export default Component => asyncConnect([
   {
-    promise: ({ store: { dispatch } }) => dispatch(getHomeData()),
+    promise: ({ store: { dispatch } }) => dispatch(getUsersData()),
   },
 ], mapStateToProps, mapDispatchToProps)(Component);

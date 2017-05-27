@@ -1,3 +1,5 @@
+import actionTypes from 'actions/actionTypes';
+
 /* reducer to hold home page state */
 const defaultState = {
   id: '1',
