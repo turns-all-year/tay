@@ -26,7 +26,7 @@ const defaultProps = {
 
 export const TripItem = ({ img, date, title, body, className, author }) => (
   <div className={`${styles.main} ${className}`}>
-    <div className={styles.image} style={{ background: `url(/images/${img[0]}) no-repeat center` }} />
+    <div className={styles.image} style={{ backgroundImage: `url(/images/${img[0]})` }} />
 
     <div className={styles.data}>
       <h4>{title}</h4>

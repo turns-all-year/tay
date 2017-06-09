@@ -1,6 +1,6 @@
 @import "~web/client/scss/mixins";
 
-.main {
+.wrapper {
   @include main;
 }
 
@@ -13,6 +13,21 @@
 }
 
 .tripSection {
-  @include whiteBox;
   margin: 0 0 20px;
+}
+
+.listControls {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.main {
+  @include sideBarWrapper;
+}
+
+.tripsTop {
+  display: flex;
+  align-items: center;
 }

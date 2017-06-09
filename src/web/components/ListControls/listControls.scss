@@ -1,12 +1,5 @@
 @import "~web/client/scss/mixins";
 
-.main {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .controlGroup {
   position: relative;
   margin: 0 10px;
@@ -77,12 +70,4 @@
       margin: 0 10px;
     }
   }
-}
-
-.filters {
-  @extend %dropList;
-}
-
-.sort {
-  @extend %dropList;
 }

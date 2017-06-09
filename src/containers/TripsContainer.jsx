@@ -4,11 +4,11 @@
 
 import { asyncConnect } from 'redux-connect';
 
-import { getTripsData } from 'actions/tripsActions';
+import { getTripsData, getTripsCategoriesData } from 'actions/tripsActions';
 
 // Adding the contianer logic here
-function mapStateToProps({ trips }) {
-  return { ...trips };
+function mapStateToProps({ trips }, { routeParams }) {
+  return { ...trips, routeParams };
 }
 
 function mapDispatchToProps() {
@@ -18,5 +18,8 @@ function mapDispatchToProps() {
 export default Component => asyncConnect([
   {
     promise: ({ store: { dispatch } }) => dispatch(getTripsData()),
+  },
+  {
+    promise: ({ store: { dispatch } }) => dispatch(getTripsCategoriesData()),
   },
 ], mapStateToProps, mapDispatchToProps)(Component);

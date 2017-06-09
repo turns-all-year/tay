@@ -9,15 +9,7 @@
 }
 
 .main {
-  display: flex;
-  align-items: flex-start;
-}
-
-.sideBar {
-  @include whiteBox;
-  width: 30%;
-  margin-right: #{$largeGutter}px;
-  color: $dimGrey;
+  @include sideBarWrapper;
 }
 
 .stats {
@@ -55,5 +47,12 @@
 
 .postsTop {
   display: flex;
+  align-items: center;
+}
+
+.listControls {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
   align-items: center;
 }

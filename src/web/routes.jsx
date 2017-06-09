@@ -20,7 +20,8 @@ export default (
     <Route exact path="groups" component={Groups} />
     <Route path="groups/:groupId" component={Group} />
     <Route exact path="trip-reports" component={Trips} />
-    <Route path="trip-reports/:tripId" component={Trip} />
+    <Route path="users/:userId/trip-reports/:tripId" component={Trip} />
+    <Route path="trip-reports/:year/:month" component={Trips} />
     <Route exact path="random-tracks" component={Tracks} />
     <Route path="random-tracks/:trackId" component={Track} />
   </Route>

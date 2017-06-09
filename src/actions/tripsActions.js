@@ -21,3 +21,24 @@ export function getTripsData() {
       .catch(error);
   };
 }
+
+export function tripsCategoriesDataSuccess(data) {
+  return {
+    type: actionTypes.TRIPS.CATEGORIES_DATA_SUCCESS,
+    data,
+  };
+}
+
+export function getTripsCategoriesData() {
+  return (dispatch) => {
+    dispatch(loading());
+
+    return fetch('http://localhost:3000/stubData/tripCategories.json')
+      .then(resp => resp.json())
+      .then((data) => {
+        dispatch(loaded());
+        dispatch(tripsCategoriesDataSuccess(data.items));
+      })
+      .catch(error);
+  };
+}

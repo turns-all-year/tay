@@ -44,3 +44,23 @@
 @mixin pageHeading {
   margin: 10px 0;
 }
+
+@mixin sideBarWrapper {
+  display: flex;
+  align-items: flex-start;
+
+  >* {
+    &:first-child {
+      @include whiteBox;
+      width: 30%;
+      margin-right: #{$largeGutter}px;
+      color: $dimGrey;
+    }
+
+    &:last-child {
+      @include whiteBox;
+      width: 70%;
+    }
+  }
+
+}

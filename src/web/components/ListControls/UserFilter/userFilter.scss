@@ -1,0 +1,5 @@
+@import "../listControls";
+
+.filters {
+  @extend %dropList;
+}

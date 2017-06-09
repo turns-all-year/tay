@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import container from 'containers/UserContainer';
 import TripItem from 'web/components/TripItem';
 import ListItem from 'web/components/ListItem';
-import ListControls from 'web/components/ListControls';
+import UserFilter from 'web/components/ListControls/UserFilter';
+import StandardSort from 'web/components/ListControls/StandardSort';
 
 import styles from './user.scss';
 
@@ -30,7 +31,7 @@ export const User = ({ name, totalPosts, consecutiveMonths, createdDate, posts, 
       <h2 className={styles.name}>{name}</h2>
     </div>
     <main className={styles.main}>
-      <section className={styles.sideBar}>
+      <section>
         <div className={styles.profilePic} style={{ background: `url(/images/${profilePic}) center` }} />
         <ul className={styles.stats}>
           <li><i className="icon-new-message" /> <span>{totalPosts} posts</span></li>
@@ -42,7 +43,10 @@ export const User = ({ name, totalPosts, consecutiveMonths, createdDate, posts, 
       <section className={styles.posts}>
         <div className={styles.postsTop}>
           <h3>{name.split(' ')[0]}&#39;s Posts</h3>
-          <ListControls />
+          <header className={styles.listControls}>
+            <UserFilter />
+            <StandardSort />
+          </header>
         </div>
 
         <hr />

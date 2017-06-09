@@ -1,0 +1,32 @@
+@import "~web/client/scss/variables";
+
+.main {
+  color: $darkestGrey;
+
+  h5 {
+    margin: 0 0 5px;
+    font-size: 2rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0 0 20px;
+  }
+
+  a {
+    cursor: pointer;
+    color: $dimGrey;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px 0;
+
+    &:hover,
+    &.active {
+      color: $linkHoverBlue;
+      background: $whiteSmoke;
+    }
+  }
+}
