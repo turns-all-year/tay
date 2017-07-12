@@ -5,6 +5,7 @@ import home from './homeReducer';
 import user from './userReducer';
 import users from './usersReducer';
 import trips from './tripsReducer';
+import trip from './tripReducer';
 
 export default {
   global,
@@ -12,5 +13,6 @@ export default {
   user,
   users,
   trips,
+  trip,
   reduxAsyncConnect,
 };

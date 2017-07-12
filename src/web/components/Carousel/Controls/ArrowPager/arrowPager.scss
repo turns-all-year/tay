@@ -1,0 +1,33 @@
+@import "~web/client/scss/mixins";
+
+.main {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    i {
+      color: $linkHoverBlue;
+    }
+  }
+
+  i {
+    color: $dimGrey;
+    font-size: 4rem;
+  }
+}
+
+.disabled {
+  cursor: default;
+
+  i {
+    color: $lightGrey;
+  }
+
+  &:hover {
+    i {
+      color: $lightGrey;
+    }
+  }
+}

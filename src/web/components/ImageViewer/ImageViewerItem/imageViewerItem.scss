@@ -1,0 +1,14 @@
+@import "~web/client/scss/mixins";
+
+.imageWrapper {
+  p {
+    font-size: 1.2rem;
+    color: $dimGrey;
+    margin: 5px 0 0;
+  }
+}
+
+.image {
+  @include aspectRatio(1, 1);
+  @include imageHolder;
+}

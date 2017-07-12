@@ -1,0 +1,36 @@
+@import "~web/client/scss/mixins";
+@import "./shared";
+
+.wrapper {
+  @include main;
+}
+
+.title {
+  @include pageHeading;
+}
+
+.main {
+  @include sideBarWrapper(true);
+}
+
+.comment,
+.initialPost {
+  @include whiteBox;
+  margin: 0 0 #{$largeGutter}px;
+
+  >div {
+    margin: 0 0 10px;
+  }
+
+  >p {
+    margin: 0;
+  }
+
+  .imageViewer {
+    margin: 20px 0 0;
+  }
+}
+
+.date {
+  @extend %date;
+}

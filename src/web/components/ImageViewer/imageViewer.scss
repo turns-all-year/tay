@@ -1,0 +1,7 @@
+@import "~web/client/scss/mixins";
+
+.main {
+  :global(.carousel-tile-wrapper) {
+    width: 33.33%;
+  }
+}

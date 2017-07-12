@@ -7,12 +7,10 @@
 
 .image {
   @include aspectRatio(1, 1);
-  width: 50%;
+  @include imageHolder;
   flex-shrink: 0;
   flex-grow: 0;
   margin: 0 15px 0 0;
-  background: no-repeat center;
-  background-size: cover;
 
   @include media($phabletWidth, 0) {
     width: 30%;
@@ -30,4 +28,10 @@
 .author {
   display: block;
   margin: 10px 0;
+}
+
+.tripTitle {
+  a {
+    @include headingLink;
+  }
 }

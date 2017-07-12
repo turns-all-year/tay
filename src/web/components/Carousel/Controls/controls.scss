@@ -1,0 +1,30 @@
+@import "~web/client/scss/mixins";
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100.1%; // getting a slim line of missed coverage, here. .1% fix
+  height: 100%;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 3;
+}
+
+%arrow {
+  pointer-events: auto;
+  width: 40px;
+  position: absolute;
+  height: 100%;
+}
+
+.leftArrow {
+    @extend %arrow;
+    left: 0;
+}
+
+.rightArrow {
+    @extend %arrow;
+    right: 0;
+}

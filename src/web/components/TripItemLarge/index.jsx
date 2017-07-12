@@ -17,6 +17,7 @@ const propTypes = {
   body: PropTypes.string.isRequired,
   className: PropTypes.string,
   author: PropTypes.object,
+  id: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -24,12 +25,19 @@ const defaultProps = {
   author: null,
 };
 
-export const TripItem = ({ img, date, title, body, className, author }) => (
+export const TripItemLarge = ({ id, img, date, title, body, className, author }) => (
   <div className={`${styles.main} ${className}`}>
-    <div className={styles.image} style={{ backgroundImage: `url(/images/${img[0]})` }} />
+    <Link
+      className={styles.image}
+      style={{ backgroundImage: `url(/images/${img[0]})` }}
+      to={`users/${author.id}/trip-reports/${id}`}
+    />
 
     <div className={styles.data}>
-      <h4>{title}</h4>
+      <h4 className={styles.tripTitle}>
+        <Link to={`users/${author.id}/trip-reports/${id}`}>{title}</Link>
+      </h4>
+
       <div className={styles.date}>{date}</div>
 
       <Link to={`users/${author.id}`} className={styles.author}>{author.name}</Link>
@@ -41,7 +49,7 @@ export const TripItem = ({ img, date, title, body, className, author }) => (
   </div>
 );
 
-TripItem.propTypes = propTypes;
-TripItem.defaultProps = defaultProps;
+TripItemLarge.propTypes = propTypes;
+TripItemLarge.defaultProps = defaultProps;
 
-export default TripItem;
+export default TripItemLarge;

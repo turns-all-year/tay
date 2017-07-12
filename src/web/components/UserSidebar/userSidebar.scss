@@ -1,0 +1,33 @@
+@import "~web/client/scss/mixins";
+
+.name {
+  margin: 0 0 10px;
+}
+
+.stats {
+  list-style: none;
+  margin: 20px 0;
+
+  li {
+    margin: 10px 0;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+
+    span {
+      line-height: 1em;
+    }
+  }
+
+  i {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.profilePic {
+  @include aspectRatio(1,1);
+  width: 100%;
+  border-radius: 50%;
+  margin: 20px 0 50px;
+}

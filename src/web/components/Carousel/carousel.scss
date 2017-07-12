@@ -1,0 +1,48 @@
+@import "~web/client/scss/mixins";
+
+$transition: .7;
+$halfGutter: 10;
+
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.main {
+  &:global(.is-mouse-experience) {
+    overflow: hidden;
+  }
+}
+
+.content {
+  white-space: nowrap;
+  position: relative;
+  box-sizing: border-box;
+  z-index: 1;
+  transition: transform #{$transition}s ease;
+  width: calc(100% + #{$halfGutter * 2}px);
+  margin-left: -#{$halfGutter}px;
+
+  :global(.is-touch-experience) & {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  :global(.carousel-tile-wrapper) {
+    padding: 0 #{$halfGutter}px;
+  }
+}
+
+.tileWrapper {
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: normal;
+  vertical-align: top;
+}

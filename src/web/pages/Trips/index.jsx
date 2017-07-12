@@ -42,7 +42,7 @@ export const Trips = ({ trips, categories, routeParams }) => {
       <main className={styles.main}>
         <section>
           {
-            categories.map((category, index) => <Category key={index} {...{ ...category, currentPath }} />)
+            categories.map((category, index) => <Category key={index} {...{ ...category, currentPath, expanded: (index === 0) }} />)
           }
         </section>
 

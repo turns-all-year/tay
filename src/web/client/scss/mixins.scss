@@ -21,6 +21,15 @@
   }
 }
 
+@mixin headingLink {
+  color: $dimGrey;
+  text-decoration: none;
+
+  &:hover {
+    color: $linkHoverBlue;
+  }
+}
+
 @mixin whiteBox {
   border: 1px solid $lightGrey;
   border-radius: 5px;
@@ -36,6 +45,11 @@
   }
 }
 
+@mixin imageHolder {
+  background: no-repeat center;
+  background-size: cover;
+}
+
 @mixin postDate {
   color: $dimGrey;
   font-size: 1.2rem;
@@ -45,7 +59,7 @@
   margin: 10px 0;
 }
 
-@mixin sideBarWrapper {
+@mixin sideBarWrapper($noBoxRight:false) {
   display: flex;
   align-items: flex-start;
 
@@ -58,7 +72,10 @@
     }
 
     &:last-child {
-      @include whiteBox;
+      @if $noBoxRight == false {
+        @include whiteBox;
+      }
+
       width: 70%;
     }
   }
