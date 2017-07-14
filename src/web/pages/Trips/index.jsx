@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 import container from 'containers/TripsContainer';
 import TripItem from 'web/components/TripItemLarge';
@@ -37,6 +38,7 @@ export const Trips = ({ trips, categories, routeParams }) => {
     <main className={styles.wrapper}>
       <div className={styles.top}>
         <h2 className={styles.pageHeading}>Trip Reports</h2>
+        <Link to="create-post/trip-report">+ New Trip Report</Link>
       </div>
 
       <main className={styles.main}>

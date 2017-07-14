@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Header from 'web/components/Header';
 
+import './client/scss/base.global.scss';
 import styles from './app.scss';
 
 const propTypes = {

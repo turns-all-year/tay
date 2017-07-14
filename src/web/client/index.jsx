@@ -7,33 +7,37 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-connect';
 import thunk from 'redux-thunk';
+import { AppContainer } from 'react-hot-loader';
 
 import reducers from 'reducers';
 import routes from 'web/routes';
 
 const store = createStore(
   combineReducers(reducers),
-  window.__data, // eslint-disable no-underscore-dangle
+  window.__data, // eslint-disable-line no-underscore-dangle
   compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f,
   ),
 );
 
-const render = () => {
+const render = (routesFile) => {
   ReactDOM.render(
-    <Provider store={store} key="provider">
-      <Router routes={routes} render={props => <ReduxAsyncConnect {...props} />} history={browserHistory} />
-    </Provider>,
+    <AppContainer>
+      <Provider store={store} key="provider">
+        <Router routes={routesFile} render={props => <ReduxAsyncConnect {...props} />} history={browserHistory} />
+      </Provider>
+    </AppContainer>,
     document.getElementById('react-root'),
   );
 };
 
-render();
+render(routes);
 
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('web/routes.jsx', () => {
-    render();
+    const nextRoutes = require('web/routes').default;
+    render(nextRoutes);
   });
 }

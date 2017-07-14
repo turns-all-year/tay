@@ -79,5 +79,22 @@
       width: 70%;
     }
   }
+}
 
+@mixin rightSideBarWrapper {
+  display: flex;
+  align-items: flex-start;
+
+  >* {
+    @include whiteBox;
+
+    &:first-child {
+      width: 70%;
+      margin-right: #{$largeGutter}px;
+    }
+
+    &:last-child {
+      width: 30%;
+    }
+  }
 }

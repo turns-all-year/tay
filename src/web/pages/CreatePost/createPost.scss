@@ -1,0 +1,82 @@
+@import "~web/client/scss/mixins";
+
+.wrapper {
+  @include main;
+}
+
+.pageHeading {
+  @include pageHeading;
+}
+
+.main {
+  @include rightSideBarWrapper;
+}
+
+.guidelines {
+  display: flex;
+  flex-wrap: wrap;
+
+  >div {
+    width: 30%;
+    font-weight: bold;
+  }
+
+  >ul {
+    width: 70%;
+  }
+}
+
+.dropZone > div {
+  width: 100%;
+  margin: 30px 0;
+  border: 2px dashed $linkBlue;
+  box-sizing: border-box;
+  padding: #{$largeGutter}px;
+}
+
+.errors {
+  margin-bottom: #{$largeGutter}px;
+}
+
+.rejectedFile,
+.errorMessage {
+  border: 1px solid $errorBorder;
+  background-color: $errorBg;
+  padding: 7px;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  >div {
+    width: 48%;
+    margin: #{$smallGutter / 2}px 0;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.removeImage {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border: 1px solid $darkGrey;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: $whiteSmoke;
+  cursor: pointer;
+  color: $darkestGrey;
+
+  &:hover {
+    color: $darkGrey;
+  }
+}

@@ -124,13 +124,16 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
-  height: 38px;
+  // height: 38px;
+  width: 100%;
+  font-size: 1.4rem;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box; }
+
 /* Removes awkward default styles on some inputs for iOS */
 input[type="email"],
 input[type="number"],
@@ -178,7 +181,7 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: circle inside; }
+  list-style: disc; }
 ol {
   list-style: decimal inside; }
 ol, ul {

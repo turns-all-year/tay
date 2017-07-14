@@ -11,6 +11,7 @@ import Track from 'web/pages/Track';
 import Tracks from 'web/pages/Tracks';
 import Trip from 'web/pages/Trip';
 import Trips from 'web/pages/Trips';
+import CreatePost from 'web/pages/CreatePost';
 
 export default (
   <Route path="/" component={App}>
@@ -24,5 +25,7 @@ export default (
     <Route path="trip-reports/:year/:month" component={Trips} />
     <Route exact path="random-tracks" component={Tracks} />
     <Route path="random-tracks/:trackId" component={Track} />
+    <Route path="create-post" component={CreatePost} />
+    <Route path="create-post/:postType" component={CreatePost} />
   </Route>
 );

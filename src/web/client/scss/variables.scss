@@ -8,6 +8,8 @@ $darkestGrey: #222;
 $black: #000;
 $linkBlue: #1EAEDB;
 $linkHoverBlue: #0FA0CE;
+$errorBorder: red;
+$errorBg: #ffadad;
 
 /* widths */
 $phabletWidth: 550px;
@@ -16,4 +18,5 @@ $laptopWidth: 1024px;
 $desktopWidth: 1280px;
 $maxWidth: 1200px;
 
+$smallGutter: 10;
 $largeGutter: 20;

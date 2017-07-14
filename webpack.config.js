@@ -6,7 +6,7 @@ module.exports = {
 
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
+    // 'webpack-dev-server/client?http://localhost:8080',
     // 'webpack/hot/only-dev-server',
     'web/client/index.jsx',
   ],
@@ -39,8 +39,27 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
+        test: /\.global\.scss$/,
+        // include: __dirname,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false,
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
-        include: __dirname,
+        // include: __dirname,
+        exclude: /\.global\.scss$/,
         use: [
           {
             loader: 'style-loader',
