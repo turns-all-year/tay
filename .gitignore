@@ -1,4 +1,5 @@
 node_modules
+uploads
 
 dist/bundle.js
 dist/bundle.js.map
@@ -6,3 +7,4 @@ dist/serverSideRender.js
 dist/serverSideRender.js.map
 dist/styles.css
 dist/styles.css.map
+aws.config.json

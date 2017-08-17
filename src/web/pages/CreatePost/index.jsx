@@ -6,11 +6,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Text, Textarea } from 'react-form';
-import Dropzone from 'react-dropzone';
+
+import ImageUpload from './ImageUpload';
 
 import styles from './createPost.scss';
-
-const errorTime = 5000;
 
 const postTypeToName = {
   'trip-report': 'Trip Report',
@@ -19,65 +18,44 @@ const postTypeToName = {
 
 const propTypes = {
   routeParams: PropTypes.object.isRequired,
+  submitOverride: PropTypes.func,
+};
+
+const defaultProps = {
+  submitOverride: null,
 };
 
 export class CreatePost extends React.Component {
   constructor() {
     super();
 
-    this.state = { acceptedFiles: [], rejectedFiles: [] };
+    this.state = { filesUploaded: [], loading: false };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onDrop = this.onDrop.bind(this);
-    this.setError = this.setError.bind(this);
+    this.onFilesUploaded = this.onFilesUploaded.bind(this);
   }
 
-  componentWillUnmount() {
-    // important to prevent memory leaks
-    this.state.acceptedFiles.forEach(file => window.URL.revokeObjectURL(file.preview));
-  }
-
-  onDrop(accepted, rejected) {
-    if (this.state.acceptedFiles.length < 5) {
-      this.setState({ acceptedFiles: this.state.acceptedFiles.concat(accepted), rejectedFiles: rejected });
-    } else {
-      this.setError('You can only upload 5 pictures');
-    }
-
-    if (rejected.length > 0) {
-      setTimeout(() => {
-        this.setState({ rejectedFiles: [] });
-      }, errorTime);
-    }
-  }
-
-  setError(message) {
-    this.setState({ errorMessage: message });
-
-    setTimeout(() => {
-      this.setState({ errorMessage: undefined });
-    }, errorTime);
-  }
-
-  removeImage(index) {
-    const { acceptedFiles } = this.state;
-
-    window.URL.revokeObjectURL(acceptedFiles[index].preview);
-
-    acceptedFiles.splice(index, 1);
-    this.setState({ acceptedFiles });
+  onFilesUploaded(files) {
+    this.setState({ filesUploaded: this.state.filesUploaded.concat(files) });
   }
 
   handleSubmit(values) {
-    console.log(this.state);
-    console.log(values);
+    this.setState({ loading: true });
+
+    if (this.props.submitOverride) {
+      this.props.submitOverride({ ...values, filesUploaded: this.state.filesUploaded });
+    } else {
+      console.log(this.state);
+      console.log(values);
+    }
   }
 
   render() {
     const { routeParams } = this.props;
-    const { acceptedFiles, rejectedFiles, errorMessage } = this.state;
+    const { loading } = this.state;
 
     const postType = routeParams.postType ? postTypeToName[routeParams.postType] : 'Post';
+    const loadingSpan = loading ? <span className={styles.loading}>Loading...</span> : null;
 
     return (
       <div className={styles.wrapper}>
@@ -117,7 +95,7 @@ export class CreatePost extends React.Component {
                 <form onSubmit={submitForm}>
                   <div className={styles.formRow}>
                     <label htmlFor="title">Title</label>
-                    <Text field="title" id="title" type="text" />
+                    <Text field="title" id="title" type="text" placeholder="Format: June 23, 2007, Mt. Rainier, Camp Muir corn" />
                   </div>
 
                   <div className={styles.formRow}>
@@ -129,52 +107,14 @@ export class CreatePost extends React.Component {
                     />
                   </div>
 
-                  <button type="submit" className="button-primary">Submit</button>
+                  <button type="submit" className="button-primary" disabled={loading}>Submit</button>
+                  {loadingSpan}
                 </form>
               )}
             </Form>
           </section>
 
-          <section>
-            <h4>Add up to five photos</h4>
-            (you can add more photos that exist on the web already)
-
-            <div className={styles.dropZone}>
-              <Dropzone
-                accept="image/jpeg, image/png"
-                onDrop={this.onDrop}
-                style={{ width: '100%' }}
-                activeStyle={{ borderColor: 'green' }}
-                rejectStyle={{ borderColor: 'red' }}
-              >
-                <p>Drag and drop images here or click to open file picker</p>
-                <p>Only *.jpeg and *.png images will be accepted</p>
-              </Dropzone>
-            </div>
-
-            <div className={styles.errors}>
-              {
-                rejectedFiles.map(file => (
-                  <div className={styles.rejectedFile}>
-                    {file.name} is not a vailid file type
-                  </div>
-                ))
-              }
-
-              {errorMessage ? <div className={styles.errorMessage}>{errorMessage}</div> : null}
-            </div>
-
-            <div className={styles.images}>
-              {acceptedFiles.map((file, index) => (
-                <div key={`${file.preview}`}>
-                  <span className={styles.removeImage} onClick={() => this.removeImage(index)}>
-                    <i className="icon-cross" />
-                  </span>
-                  <img alt={file.name} src={file.preview} />
-                </div>
-              ))}
-            </div>
-          </section>
+          <ImageUpload onFilesUploaded={this.onFilesUploaded} />
         </div>
       </div>
     );
@@ -182,5 +122,6 @@ export class CreatePost extends React.Component {
 }
 
 CreatePost.propTypes = propTypes;
+CreatePost.defaultProps = defaultProps;
 
 export default CreatePost;
